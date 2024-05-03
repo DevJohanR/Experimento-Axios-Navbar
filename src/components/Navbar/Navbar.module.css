@@ -1,0 +1,95 @@
+.Navbar{
+    min-height: 100vh;
+    background: #333;
+    color: white;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 28px 12%;
+    transition:  all .50s ease;
+}
+
+.logo{
+    display: flex;
+    font-size: 28px;
+    margin-right: 3px;
+
+}
+
+.logo span{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.navbar{
+    display: flex;
+}
+
+.a{
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 30px;
+    transition: all .50s ease;
+}
+
+
+.a:hover{
+color: blue;
+}
+
+.active.active{
+    color: blue;
+    }
+
+    .main{
+        display: flex;
+        align-items: center;
+    }
+
+
+    .aa{
+        margin-right: 25px;
+        margin-left: 10px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all .50s ease;
+    }
+    
+    .user{
+        display: flex;
+        align-items: center;
+    }
+
+    .user i{
+        color: blue;
+        font-size: 28px;
+        margin-right: 7px;
+
+    }
+
+    .main span:hover{
+        color: blue;
+    }
+
+
+    @media(max-width: 1280px){
+header{
+    padding: 14px;
+    transition: .2s;
+}
+
+.a{
+    padding: 5px 0;
+    margin: 0px 20px;
+}
+    }
