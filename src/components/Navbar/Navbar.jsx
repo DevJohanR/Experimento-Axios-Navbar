@@ -1,53 +1,62 @@
-import React, { useEffect, useRef } from 'react';
-
-import styles from './Navbar.module.css'
+import React, { useEffect, useState } from 'react';
+import styles from './Navbar.module.css';
 import { IoHomeSharp } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { TiThMenu } from "react-icons/ti";
 
 
-
-
 const Navbar = () => {
-  const menuIconRef = useRef(null);
+  const [showMenuIcon, setShowMenuIcon] = useState(window.innerWidth <= 1090);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Asigna el id 'menu-icon' al div después de que el componente se monta
-    if (menuIconRef.current) {
-      menuIconRef.current.id = 'menuIcon';
-    }
+    const handleResize = () => {
+      setShowMenuIcon(window.innerWidth <= 1090);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const menuIconStyles = {
     fontSize: '35px',
     color: 'blue',
     cursor: 'pointer',
     zIndex: 10001,
-    display: 'none'
+    display: showMenuIcon ? 'block' : 'none'
   };
 
   return (
     <div className={styles.Navbar}>
-        <header>
-            <a href="#" className={styles.logo}> <i className={styles.icon}><IoHomeSharp /></i><span>Logo</span> </a>
-            <ul className={styles.navbar}>
-            <li className={`${styles.a} ${styles.active}`}>Home</li>
-              <li className={styles.a}>Nosotros</li>
-              <li className={styles.a}>Servicios</li>
-              <li className={styles.a}>Contacto</li>
-              <li className={styles.a}>Blog</li>
-            </ul>
-            <div className={styles.main}>
-              <span className={styles.user}><i><FaUser /></i>Ingresar</span>
-              <span className={styles.aa}>Registrarse</span>
-              <div ref={menuIconRef}  style={menuIconStyles}> 
-      <TiThMenu />
+      <header>
+        <a href="#" className={styles.logo}>
+        
+          <span><img src="/Logo.png" width={70} alt="" /></span>
+        </a>
+        <ul className={`${styles.navbar} ${isMenuOpen ? styles.open : ''}`}>
+          <li className={`${styles.a} ${styles.active}`}>Home</li>
+          <li className={styles.a}>Nosotros</li>
+          <li className={styles.a}>Servicios</li>
+          <li className={styles.a}>Contacto</li>
+          <li className={styles.a}>Blog</li>
+        </ul>
+        <div className={styles.main}>
+          <span className={styles.user}>
+            <FaUser className={styles.icon} />
+            Ingresar
+          </span>
+          <span className={styles.aa}>Registrarse</span>
+          <div onClick={toggleMenu} style={menuIconStyles}>
+            <TiThMenu />
+          </div>
+        </div>
+      </header>
     </div>
-            </div>
-        </header>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Navbar
+export default Navbar;

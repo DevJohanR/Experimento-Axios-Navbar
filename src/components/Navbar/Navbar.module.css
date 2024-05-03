@@ -1,3 +1,4 @@
+
 .Navbar{
     min-height: 100vh;
     background: #333;
@@ -28,10 +29,13 @@ header{
 .logo span{
     font-size: 1.1rem;
     font-weight: 600;
+    
 }
 
 .navbar{
     display: flex;
+    text-decoration: none;
+    list-style: none;
 }
 
 .a{
@@ -69,12 +73,17 @@ color: blue;
         display: flex;
         align-items: center;
     }
+    
 
-    .user i{
+    .icon{
         color: blue;
         font-size: 28px;
         margin-right: 7px;
 
+    }
+    .main span{
+        font-weight: 900;
+        
     }
 
     .main span:hover{
@@ -91,5 +100,31 @@ header{
 .a{
     padding: 5px 0;
     margin: 0px 20px;
+}
+    } 
+
+    @media(max-width: 1090px){
+.navbar{
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 270px;
+    height: 29vh;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+    transition: all .50s ease;
+}
+
+.a:hover{
+    color: purple;
+}
+.a.active{
+    color: pink;
+}
+.navbar.open{
+    right: 2%;
 }
     }
